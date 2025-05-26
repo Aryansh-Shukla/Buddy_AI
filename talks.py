@@ -13,7 +13,7 @@ import google.generativeai as genai
 
 genai.configure(api_key=api_key)
 
-model = genai.GenerativeModel("gemini-2.0-flash")
+model = genai.GenerativeModel("gemini-2.5-flash-preview-05-20")
 
 
 def ai(prompt):
@@ -85,3 +85,8 @@ if __name__ == "__main__":
         if "using gemini" in query.lower():
             cleaned_prompt = query.lower().replace("using gemini", "").strip()
             ai(prompt=cleaned_prompt)
+        if "hi buddy" in query.lower():
+            ai(prompt=query)
+        if any(exit_phrase in query for exit_phrase in ["goodbye buddy", "exit", "close buddy", "sign off buddy"]):
+            say("Goodbye! Shutting down Buddy A.I.")
+            break
