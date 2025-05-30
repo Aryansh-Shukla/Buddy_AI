@@ -57,7 +57,7 @@ def takeCommand():
 
 if __name__ == "__main__":
     print('VS code running')
-    say("Hello i am Buddy A.I.")
+    say("Hello i am Buddy A.I. , How can I help you")
     while True:
         print("Listening...")
         query=takeCommand()
@@ -81,7 +81,7 @@ if __name__ == "__main__":
             webbrowser.open(url)
         if "what is the time buddy" in query:
             strfTime=datetime.datetime.now().strftime("%H:%M:%S")
-            say(f"buddy the time is {strfTime}")
+            say(f"buddy, the time is {strfTime}")
         if "using gemini" in query.lower():
             cleaned_prompt = query.lower().replace("using gemini", "").strip()
             ai(prompt=cleaned_prompt)
@@ -90,3 +90,5 @@ if __name__ == "__main__":
         if any(exit_phrase in query for exit_phrase in ["goodbye buddy", "exit", "close buddy", "sign off buddy"]):
             say("Goodbye! Shutting down Buddy A.I.")
             break
+        else:
+            ai(prompt=query)
